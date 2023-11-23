@@ -89,9 +89,13 @@ public class Voiture {
 	 * @param out l'endroit où imprimer (ex: System.out)
 	 */
 	public void imprimeStationnements(PrintStream out) {
-		for (Stationnement s : myStationnements) {
-			System.out.println(s.getGarage().getName().toString() + ":");
-			System.out.println("\t" + s.toString());
+		for (Garage garage : garagesVisites()) {
+			out.append(garage.toString() + ":" + "\n");
+			for (Stationnement stationnement: myStationnements) {
+				if (stationnement.getGarage() == garage){
+					out.append(" " + stationnement.toString() + "\n");
+				}
+			}
 		}
 		// Utiliser les méthodes toString() de Garage et Stationnement
 	}
